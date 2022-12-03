@@ -1,7 +1,4 @@
-def read_input(filename: str):
-    with open(filename, "r") as f:
-        return [x.rstrip() for x in f.readlines()]
-
+from helpers.utils import read_input
 
 def main():
     # Keep track of the calories of each elf
