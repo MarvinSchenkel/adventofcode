@@ -19,7 +19,7 @@ def two():
     for elf_pair in read_input("src/aoc/04/04.txt"):
         first_elf = get_range(elf_pair.split(",")[0])
         second_elf = get_range(elf_pair.split(",")[1])
-        overlaps = overlaps + 1 if len(first_elf.intersection(second_elf)) > 0 or len(second_elf.intersection(first_elf)) > 0 else overlaps
+        overlaps = overlaps + 1 if len(first_elf & second_elf) > 0 else overlaps
     print(f"[2]: {overlaps}")
 
 
