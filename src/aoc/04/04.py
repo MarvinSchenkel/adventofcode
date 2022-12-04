@@ -2,9 +2,11 @@ def read_input(filename: str):
     with open(filename, "r") as f:
         return [x.rstrip() for x in f.readlines()]
 
+
 def get_range(input: str):
     start, end = input.split("-")
     return set(range(int(start), int(end) + 1))
+
 
 def one():
     overlaps = 0
@@ -13,6 +15,7 @@ def one():
         second_elf = get_range(elf_pair.split(",")[1])
         overlaps = overlaps + 1 if first_elf <= second_elf or second_elf <= first_elf else overlaps
     print(f"[1]: {overlaps}")
+
 
 def two():
     overlaps = 0
@@ -26,6 +29,7 @@ def two():
 def main():
     one()
     two()
+
 
 if __name__ == "__main__":
     main()
