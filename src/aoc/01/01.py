@@ -1,10 +1,12 @@
-from helpers.utils import read_input
+def read_input(filename: str):
+    with open(filename, "r") as f:
+        return [x.rstrip() for x in f.readlines()]
 
 def main():
     # Keep track of the calories of each elf
     elfs = []
     total_calories = 0
-    for line in read_input("day1.txt"):
+    for line in read_input("src/aoc/01/01.txt"):
         if not line:
             elfs.append(total_calories)
             total_calories = 0

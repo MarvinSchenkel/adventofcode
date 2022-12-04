@@ -1,4 +1,3 @@
-from code import interact
 from functools import reduce
 
 def read_input(filename: str):

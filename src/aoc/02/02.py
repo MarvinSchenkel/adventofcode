@@ -31,7 +31,7 @@ def calculate_points(opponent_hand: str, my_hand: str):
 
 def one():    
     total_points = 0
-    for game in read_input("day2.txt"):
+    for game in read_input("src/aoc/02/02.txt"):
         opponent_hand = OPPONENT_HAND_MAP.get(game[0])
         my_hand = MY_HAND_MAP.get(game[2])
         total_points += calculate_points(opponent_hand, my_hand)
@@ -40,7 +40,7 @@ def one():
 
 def two():
     total_points = 0
-    for game in read_input("day2.txt"):
+    for game in read_input("src/aoc/02/02.txt"):
         opponent_hand = OPPONENT_HAND_MAP.get(game[0])
         outcome = OUTCOME_MAP.get(game[2])
         my_hand = OPPONENT_OUTCOME_MY_HAND_MAP.get(opponent_hand).get(outcome)
