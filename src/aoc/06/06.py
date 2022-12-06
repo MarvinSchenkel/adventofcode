@@ -6,10 +6,8 @@ def find_message_marker(line: str, no_chars: int):
     processed_chars = []
     for char in line:
         processed_chars.append(char)
-        if len(processed_chars) > no_chars - 1 and len(set(processed_chars[-no_chars:])) == len(processed_chars[-no_chars:]):
-            print(f"Found: {processed_chars[-no_chars:]}")
-            break
-    return len(processed_chars)
+        if len(processed_chars) > no_chars - 1 and len(set(processed_chars[-no_chars:])) == no_chars:
+            return len(processed_chars)
 
 
 def one():
