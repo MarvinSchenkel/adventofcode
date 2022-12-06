@@ -2,12 +2,10 @@ def read_input(filename: str):
     with open(filename, "r") as f:
         return [x.rstrip() for x in f.readlines()]
 
-def find_message_marker(line: str, no_chars: int):
-    processed_chars = []
-    for char in line:
-        processed_chars.append(char)
-        if len(processed_chars) > no_chars - 1 and len(set(processed_chars[-no_chars:])) == no_chars:
-            return len(processed_chars)
+def find_message_marker(message: str, no_chars: int):
+    for i, char in enumerate(message):
+        if i > no_chars - 1 and len(set(message[i-no_chars:i])) == no_chars:
+            return i
 
 
 def one():
