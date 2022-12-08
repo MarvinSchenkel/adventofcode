@@ -36,7 +36,6 @@ def two():
     horizontal_grid = get_viewing_distances(grid)
     vertical_grid = np.transpose(get_viewing_distances(np.transpose(grid)))
     viewing_distance_grid = np.multiply(horizontal_grid, vertical_grid)
-    print(viewing_distance_grid)
     print(f"[2]: {viewing_distance_grid.max()}")
 
 def main():
