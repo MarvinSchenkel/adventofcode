@@ -18,11 +18,9 @@ def get_viewing_distances(grid):
     distance_grid = np.empty_like(grid)
     for (x, y), value in np.ndenumerate(grid):
         left_trees = list(reversed(grid[x, :y]))
-        left_trees_visible = list(itertools.takewhile(lambda a: a < value, left_trees)) 
-        left_distance = len(left_trees_visible) + (1 if len(left_trees) > len(left_trees_visible) and left_trees[len(left_trees_visible)] >= value else 0)
+        left_distance = (np.argmax(left_trees >= value) + 1 if np.max(left_trees) >= value else len(left_trees)) if len(left_trees) > 0 else 0
         right_trees = grid[x, y+1:]
-        right_trees_visible = list(itertools.takewhile(lambda b: b < value, right_trees))
-        right_distance = len(right_trees_visible) + (1 if len(right_trees) > len(right_trees_visible) and right_trees[len(right_trees_visible)] >= value else 0)
+        right_distance = (np.argmax(right_trees >= value) + 1 if np.max(right_trees) >= value else len(right_trees)) if len(right_trees) > 0 else 0
         distance_grid[x, y] = left_distance * right_distance
     return distance_grid
 
@@ -38,6 +36,7 @@ def two():
     horizontal_grid = get_viewing_distances(grid)
     vertical_grid = np.transpose(get_viewing_distances(np.transpose(grid)))
     viewing_distance_grid = np.multiply(horizontal_grid, vertical_grid)
+    print(viewing_distance_grid)
     print(f"[2]: {viewing_distance_grid.max()}")
 
 def main():
