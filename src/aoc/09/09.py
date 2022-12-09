@@ -48,6 +48,7 @@ def one():
         tail_instructions.append(tail)
     print(f"[1]: {len(set(tail_instructions))}")
 
+
 def two():
     inp = read_input("src/aoc/09/09.txt")
     instructions = parse_instructions(inp)
@@ -60,6 +61,7 @@ def two():
             knots[idx + 1] = tail
         tail_instructions.append(knots[-1])
     print(f"[2]: {len(set(tail_instructions))}")
+
 
 def main():
     one()
