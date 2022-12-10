@@ -34,7 +34,7 @@ def two():
     for ins in instructions:
         for tick in range(2) if ins[0] == "addx" else range(1):
             cycles += 1
-            CRT += "#" if (cycles - 1) % 40 in [X-1, X, X+1] else "."
+            CRT += "#" if (cycles - 1) % 40 in (X-1, X, X+1) else "."
             if tick == 1:
                 X += int(ins[1])
     print("[2]:")
