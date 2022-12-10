@@ -20,7 +20,7 @@ def one():
     for ins in instructions:
         for tick in range(2) if ins[0] == "addx" else range(1):
             cycles += 1
-            signal_strenghts.append(cycles * X if cycles in [20, 60, 100, 140, 180, 220] else 0)
+            signal_strenghts.append(cycles * X if cycles % 40 == 20 else 0)
             if tick == 1:
                 X += int(ins[1])
     print(f"[1]: {sum(signal_strenghts)}")
