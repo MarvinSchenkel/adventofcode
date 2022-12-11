@@ -36,12 +36,14 @@ def get_monkeys():
 
 def do_monkey_business(rounds, worry_divider):
     monkeys = get_monkeys()
-    for r in range(1, rounds + 1):
+    max_value = math.prod([m["test"] for m in monkeys.values()])
+    for _ in range(1, rounds + 1):
         for m in range(0, len(monkeys)):
             for i in range(0, len(monkeys[m]["items"])):
                 opr_val = monkeys[m]["items"][i] if monkeys[m]["operation"][1] == "old" else int(monkeys[m]["operation"][1])
                 new = OPS[monkeys[m]["operation"][0]](monkeys[m]["items"][i], opr_val)
-                cwl = math.floor(new / worry_divider) if worry_divider > 1 else new
+                cwl = new // worry_divider
+                cwl = cwl % max_value
                 if cwl % monkeys[m]["test"] == 0:
                    monkeys[monkeys[m]["if_true"]]["items"].append(cwl)
                 else:
@@ -54,7 +56,7 @@ def do_monkey_business(rounds, worry_divider):
 def run():
     p1 = do_monkey_business(20, 3)
     print(f"[1]: {p1[0] * p1[1]}")
-    p2 = do_monkey_business(10000, 1)
+    p2 = do_monkey_business(10_000, 1)
     print(f"[2]: {p2[0] * p2[1]}")
 
 def main():
