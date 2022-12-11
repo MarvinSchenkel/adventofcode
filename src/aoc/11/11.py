@@ -59,6 +59,7 @@ def run():
     p2 = do_monkey_business(10_000, 1)
     print(f"[2]: {p2[0] * p2[1]}")
 
+
 def main():
     run()
 
